@@ -16,11 +16,14 @@ Input:
 Output:
 
  - ExtractedData.csv with the following structure:
-    LocationName	RasterFileName				RasterValue
-    Location_A	DummyData_2000_fluxdry_NH4_ara.asc	22
-    Location_B	DummyData_2015_fluxoccult_NH4_dec.asc 43
-    Location_C	DummyData_2015_fluxwet_NH4.asc	6
-    ...
+ 
+| LocationName | RasterFileName| RasterValue  |
+| -------------|-------------| -----|
+| Location_A | DummyData_2000_fluxdry_NH4_ara.asc | 5.2 |
+| Location_B | DummyData_2015_fluxoccult_NH4_dec.asc |   4.2 |
+| Location_C | DummyData_2015_fluxwet_NH4.asc | 1.3 |
+    					
+    
 
 ## Post_process_extracted_data.R
 
@@ -32,9 +35,7 @@ Input:
 
 Output:
 
-- ExtractedDataWideFormat.csv with columns:
-  "LocationName","Year","LandUseClass","dry_NH4","dry_NO3","occult_NH4","occult_NO3","wet_NH4","wet_NO3","dry","wet","occult","NH4","NO3","Ninorg","unit"
-
+- ExtractedDataWideFormat.csv with columns: "LocationName","Year","LandUseClass","dry_NH4","dry_NO3","occult_NH4","occult_NO3","wet_NH4","wet_NO3","dry","wet","occult","NH4","NO3","Ninorg","unit"
 
 
 ## Validation against data from UBA web map viewer

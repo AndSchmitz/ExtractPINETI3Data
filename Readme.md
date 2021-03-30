@@ -1,6 +1,6 @@
 # ExtractPINETI3Data
 
-These R scripts extract data from raster files representing output of the "PINETI3" chemical transport model at user-specified point coordinates. Data is provided on request by the German Environmet Agency (UBA). See the [UBA website](https://www.umweltbundesamt.de/themen/luft/wirkungen-von-luftschadstoffen/wirkungen-auf-oekosysteme/kartendienst-stickstoffdeposition-in-deutschland) or the [FAQ](https://gis.uba.de/website/depo1/download/Erlaeuterungen_DepoKartendienst_UBA_PINETI3.pdf) for more information. The workflow to extract data is split into two parts. 
+These R scripts extract data from raster files representing output of the "PINETI3" model at user-specified point coordinates. Data is provided on request by the German Environmet Agency (UBA). See the [UBA website](https://www.umweltbundesamt.de/themen/luft/wirkungen-von-luftschadstoffen/wirkungen-auf-oekosysteme/kartendienst-stickstoffdeposition-in-deutschland) or the [FAQ](https://gis.uba.de/website/depo1/download/Erlaeuterungen_DepoKartendienst_UBA_PINETI3.pdf) for more information. The workflow to extract data is split into two parts. 
 
 
 

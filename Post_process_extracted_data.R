@@ -79,7 +79,7 @@ if ( any( (OutputLong$FluxType == "occult") & !(OutputLong$LandUseClass %in% c("
 }
 #Drop RasterFileName column after all relevant information has been extracted.
 OutputLong <- OutputLong %>%
-  select(-RasterFileName)
+  dplyr::select(-RasterFileName)
 
 
 #Create wet deposition fluxes for each land use class------
@@ -114,7 +114,7 @@ OutputWide <- OutputLong %>%
     #Adjust depending on what data is present in raster files
     RasterValue = round(RasterValue / 71.428,3)
   ) %>%
-  select(-FluxType,-Substance) %>%
+  dplyr::select(-FluxType,-Substance) %>%
   #Reshape table from long to wide
   pivot_wider(
     id_cols = c("LocationName","Year","LandUseClass"),

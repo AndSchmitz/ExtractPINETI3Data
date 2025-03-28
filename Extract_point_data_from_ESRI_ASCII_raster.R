@@ -3,10 +3,12 @@ rm(list=ls())
 graphics.off()
 options(warnPartialMatchDollar = T)
 
-library(raster)
-library(tidyverse)
+library(sp)
+library(terra)
+#Package terra might require "sudo apt install libgdal-dev" on ubuntu
+library(dplyr)
 
-WorkDir <- "/path/to/working/directory´"
+WorkDir <- "/path/to/working/directory"
 
 
 #Prepare I/O
@@ -121,22 +123,18 @@ for ( iFile in 1:length(FileList) ) {
 
   #PINETI3 raster files come in "ESRI ASCII Raster format"
   #http://resources.esri.com/help/9.3/arcgisdesktop/com/gp_toolref/spatial_analyst_tools/esri_ascii_raster_format.htm
-  CurrentRaster = raster(
+  CurrentRaster = terra::rast(
     x = CurrentFilePath
   )
   #Set projection to GK3
-  suppressWarnings(
-    projection(CurrentRaster) <- CRS(
-      projargs  = "+init=EPSG:31467"
-    )
-  )
+  terra::crs(CurrentRaster) <- "+init=EPSG:31467"
   
   #Extract data
-  tmp <- raster::extract(
+  tmp <- terra::extract(
     x = CurrentRaster,
-    y = PointDataCoordinatesGK3,
+    y = terra::vect(PointDataCoordinatesGK3),
     method = "simple"
-  )
+  )[,2]
   
   #Add information on StationName and RasterFileName
   CurrentExtractedData <- data.frame(
@@ -146,7 +144,7 @@ for ( iFile in 1:length(FileList) ) {
   )
   
   #Add data extracted from current file to overall results
-  ExtractedData <- bind_rows(ExtractedData,CurrentExtractedData)
+  ExtractedData <- dplyr::bind_rows(ExtractedData,CurrentExtractedData)
 
 }
 close(pb)
